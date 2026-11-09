@@ -92,9 +92,7 @@ void BaseViewModel::show_library_page() {
 }
 
 void BaseViewModel::show_player_page() {
-    if (!service::AudioEngine::instance().has_track()) {
-        return; // 没有曲目不进播放页
-    }
+    // 播放页是根页面：无曲目也允许进入（空状态由 status 行提示）
     model_.set_current_page(model::AppPage::Player);
     publish_all();
 }

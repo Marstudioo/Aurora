@@ -22,10 +22,10 @@ struct HelpRow {
 };
 
 constexpr std::array<HelpRow, 5> kLibraryRows = {{
+    {"ESC", "返回播放页"},
     {"HOLD ESC", "退出应用"},
     {"↑ ↓", "选择曲目"},
     {"ENTER", "播放选中"},
-    {"4 / 5", "曲库 / 播放"},
     {"6 / 7 / 8", "上曲 / 下曲 / 主题"},
 }};
 
@@ -33,7 +33,7 @@ constexpr std::array<HelpRow, 5> kPlayerRows = {{
     {"ENTER", "播放 / 暂停"},
     {"← →", "快退 / 快进 10 秒"},
     {"↑ ↓", "音量增减"},
-    {"ESC", "返回曲库"},
+    {"4", "打开曲库"},
     {"HOLD ESC", "退出应用"},
 }};
 

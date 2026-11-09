@@ -27,7 +27,7 @@ public:
 
 private:
     bool dark_mode_ = false;
-    AppPage current_page_ = AppPage::Library;
+    AppPage current_page_ = AppPage::Player; // 播放页是根：启动即主页
 };
 
 } // namespace model

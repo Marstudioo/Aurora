@@ -115,8 +115,12 @@ void NavBar::on_button(size_t index) {
         case 0: // 曲库
             view_model_.show_library_page();
             break;
-        case 1: // 播放/暂停
-            view_model_.toggle_play();
+        case 1: // 播放：非播放页则切到播放首页；已在播放页则播放/暂停
+            if (view_model_.current_page() == model::AppPage::Player) {
+                view_model_.toggle_play();
+            } else {
+                view_model_.show_player_page();
+            }
             break;
         case 2: // 上曲
             view_model_.prev_track();

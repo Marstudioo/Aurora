@@ -157,11 +157,9 @@ public:
         toast_->build();
         help_popup_->build();
         platform::set_global_key_listener(global_key_listener, this);
-        platform::set_key_release_listener(key_release_listener, this);
     }
 
     ~ShortcutController() {
-        platform::clear_key_release_listener(key_release_listener, this);
         platform::clear_global_key_listener(global_key_listener, this);
     }
 
@@ -200,17 +198,17 @@ private:
             return true;
         }
 
-        if (help_popup_->visible()) {
-            if (key == LV_KEY_ESC && !long_pressed) {
-                help_popup_->hide();
-            }
-            return true;
-        }
-
-        // 长按 ESC = 退出（官方语义，任何页面通用）
+        // 长按 ESC = 退出（官方语义，任何页面通用，含帮助弹层）
         if (key == LV_KEY_ESC && long_pressed) {
             toast_->hide();
             view_model_.request_quit();
+            return true;
+        }
+
+        if (help_popup_->visible()) {
+            if (key == LV_KEY_ESC) {
+                help_popup_->hide();
+            }
             return true;
         }
 
@@ -228,14 +226,14 @@ private:
         switch (key) {
             case LV_KEY_ESC:
                 if (on_player) {
-                    view_model_.show_library_page();
+                    // 播放页是根：短按提示长按退出，不再跳曲库
+                    toast_->show_highlighted("长按 ",
+                                             "ESC",
+                                             " 退出",
+                                             view::widgets::ToastTone::Warning);
                 } else {
-                    // 曲库页短按 ESC：提示长按退出
-                    toast_->show_persistent_highlighted("长按 ",
-                                                        "ESC",
-                                                        " 退出",
-                                                        view::widgets::ToastTone::Warning);
-                    exit_armed_ = true;
+                    // 曲库（子页）：ESC 逐级返回，终点恒为播放首页
+                    view_model_.show_player_page();
                 }
                 return true;
 
@@ -282,13 +280,6 @@ private:
         }
     }
 
-    void handle_release(uint32_t key) {
-        if (key == LV_KEY_ESC && exit_armed_) {
-            toast_->hide();
-            exit_armed_ = false;
-        }
-    }
-
     static bool global_key_listener(uint32_t key,
                                     const char*,
                                     bool long_pressed,
@@ -297,17 +288,9 @@ private:
         return controller && controller->handle_key(key, long_pressed);
     }
 
-    static void key_release_listener(uint32_t key, const char*, void* user_data) {
-        auto* controller = static_cast<ShortcutController*>(user_data);
-        if (controller) {
-            controller->handle_release(key);
-        }
-    }
-
     viewmodel::BaseViewModel& view_model_;
     std::unique_ptr<view::widgets::Toast> toast_;
     std::unique_ptr<view::widgets::HelpPopup> help_popup_;
-    bool exit_armed_{false};
 };
 
 #if !USE_DESKTOP
