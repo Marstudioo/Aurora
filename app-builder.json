@@ -1,0 +1,45 @@
+{
+  "app_name": "Aurora",
+  "package_name": "aurora",
+  "version": "0.1.0",
+  "description": "Aurora - bit-perfect HiFi music player for CardputerZero",
+
+  "store": {
+    "summary": "Aurora: bit-perfect HiFi player with live format readout (FLAC/MP3/WAV/OGG), direct ALSA output bypassing the system mixer.",
+    "description": "Aurora turns CardputerZero into a pocket HiFi music player.\n\n- Bit-perfect direct output: audio goes straight to the ES8389 DAC over ALSA, bypassing the system mixer, so the I2S stream matches the source file bit for bit.\n- Live format badge: every track shows codec, bit depth, sample rate and channel count, plus an honest badge — ★ bit-perfect passthrough, resampled to 96kHz, or lossy source.\n- Hardware volume: volume is controlled by the ES8389 DAC's own registers, so the digital stream is never touched.\n- Library: scans ~/Music and ~/Downloads for FLAC, MP3, WAV, OGG and AIFF files.\n- Keyboard-first UI for the 320x170 screen: arrow keys to browse, Enter to play, 4-8 for the bottom bar, hold ESC to quit.\n- Dark/light theme, persisted between sessions.\n\nSample rates up to 96kHz play bit-perfect (44.1/48/88.2/96kHz). 176.4/192kHz sources are resampled to 96kHz because of the board clock limit, and the badge says so.\n\nPrivacy: Aurora collects no personal data. All playback is local; nothing is uploaded, no network access is used, no data leaves the device, nothing is retained after the app closes, and there is no third-party sharing. The only files Aurora reads are audio files you place in ~/Music or ~/Downloads.\n\nLicense: MIT. Free for personal and commercial use.\n\nAurora is an independent third-party community application with no official affiliation with M5Stack. Cardputer and M5Stack are trademarks of their respective rights holders.",
+    "categories": [
+      "Media"
+    ],
+    "locales": {
+      "zh-CN": {
+        "summary": "Aurora：位完美 HiFi 播放器，实时显示格式徽章（FLAC/MP3/WAV/OGG），ALSA 直通输出绕过系统混音器。",
+        "description": "Aurora 把 CardputerZero 变成口袋 HiFi 音乐播放器。\n\n- 位完美直通：音频经 ALSA 直送 ES8389 DAC，绕过系统混音器，I2S 码流与源文件逐位相同。\n- 实时格式徽章：每首曲目显示 codec、位深、采样率、声道数，并如实标注——★ 位完美直通 / 重采样至 96kHz / 有损源。\n- 硬件音量：音量由 ES8389 DAC 寄存器控制，数字码流不被触碰。\n- 曲库：扫描 ~/Music 与 ~/Downloads，支持 FLAC、MP3、WAV、OGG、AIFF。\n- 键盘优先 UI（320×170 屏）：方向键浏览，Enter 播放，4-8 底部功能键，长按 ESC 退出。\n- 明暗主题，跨会话持久化。\n\n最高 96kHz 采样率位完美直通（44.1/48/88.2/96kHz）。176.4/192kHz 源因板级时钟上限重采样至 96kHz，徽章如实标注。\n\n隐私：Aurora 不收集任何个人信息。全部播放本地完成；不上传任何内容，不使用网络访问，数据不离开设备，应用关闭后不留存任何数据，无第三方共享。Aurora 唯一读取的文件是你放入 ~/Music 或 ~/Downloads 的音频文件。\n\n许可：MIT。个人与商用均可。\n\nAurora 为独立第三方社区应用，与 M5Stack 无官方关联；Cardputer、M5Stack 为其权利人商标。"
+      },
+      "ja": {
+        "summary": "Aurora: ビットパーフェクトな HiFi プレーヤー。フォーマットバッジ常時表示（FLAC/MP3/WAV/OGG）、ALSA パススルーでシステムミキサーを回避。",
+        "description": "Aurora で CardputerZero をポケット HiFi プレーヤーに。\n\n- ビットパーフェクト出力: 音声は ALSA 経由で ES8389 DAC に直結、システムミキサーをバイパスし、I2S ストリームはソースファイルとビット単位で一致。\n- リアルタイムフォーマットバッジ: 各トラックのコーデック・ビット深度・サンプルレート・チャンネル数を表示し、★ ビットパーフェクト / 96kHz へリサンプル / ロスリー の 3 種を正直に表示。\n- ハードウェア音量: ES8389 DAC レジスタで音量制御、デジタルストリームに手を入れない。\n- ライブラリ: ~/Music と ~/Downloads をスキャン、FLAC / MP3 / WAV / OGG / AIFF 対応。\n- キーボード優先 UI（320×170）: 矢印キーでブラウズ、Enter で再生、4-8 でボトムバー、ESC 長押しで終了。\n- ダーク/ライトテーマをセッション間で保持。\n\n96kHz までビットパーフェクト（44.1/48/88.2/96kHz）。176.4/192kHz ソースはボードクロックの上限により 96kHz にリサンプルされ、バッジに明記。\n\nプライバシー: Aurora は個人情報を収集しません。再生はすべてローカル。アップロードなし、ネットワークアクセスなし、データは端末から出ず、アプリ終了後に保存されるデータはなく、第三者との共有もありません。Aurora が読むのは ~/Music または ~/Downloads に置いた音声ファイルのみです。\n\nライセンス: MIT。個人利用・商用利用ともに自由。\n\nAurora は独立したサードパーティのコミュニティアプリであり、M5Stack とは公式の関係はありません。Cardputer、M5Stack は各権利者の登録商標です。"
+      }
+    },
+    "screenshots": [
+      "screenshot/aurora-library.png",
+      "screenshot/aurora-player.png"
+    ],
+    "icon": "assets/images/aurora.png",
+    "license": "MIT",
+    "source_repo": "https://github.com/Marstudioo/aurora",
+    "author": {
+      "github": "Marstudioo",
+      "display_name": "Marstudioo"
+    },
+    "share_code": "AURA",
+    "permissions": {
+      "camera": false,
+      "microphone": false,
+      "imu": false,
+      "network": false,
+      "additional_hardware": false,
+      "background_service": false,
+      "external_display": false
+    }
+  }
+}
